@@ -1,17 +1,17 @@
-const http = require('http')
-const PORT = process.env.PORT || 5500
+const http = require('http');
+const PORT = process.env.PORT || 5500;
 
 const server = http.createServer((req, res) => {
     // Handling a get request
     if(req.method === 'GET') {
-        res.write("Hello from node basic server!")
+        res.write("Hello from node basic server!");
     }
 
-    res.end()
+    res.end();
 })
 
 server.listen(PORT, '::1',() => {
-    console.log(`Server is listning on port: ${PORT}`)
+    console.log(`Server is listning on port: ${PORT}`);
 })
 
 /**

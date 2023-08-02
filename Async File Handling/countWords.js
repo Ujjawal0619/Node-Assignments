@@ -6,8 +6,8 @@ let wordCount = 0;
     const fd = await fs.open('./test.txt', 'r')
     const readStream = fd.createReadStream();
     
-    const flag = readStream.on('data', (data) => {
-        const string = data.toString();
+    const flag = readStream.on('data', (chunk) => {
+        const string = chunk.toString();
 
         if(wordCount === 0 && string.length > 0)
             wordCount = 1;
@@ -19,14 +19,8 @@ let wordCount = 0;
         }
     })
 
-    if(flag) {
-        console.log('true');
-    } else {
-        console.log('flase');
-    }
-
     readStream.on('end', () => {
-        console.log(wordCount);
+        console.log('Number of words:', wordCount);
         fd.close();
     })
 
